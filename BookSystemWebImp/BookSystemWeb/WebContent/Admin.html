@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>Admin_Interface</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+function AllBooks() {
+
+	$.getJSON("http://localhost:8080/BookSystemWeb/rest/admin/allbooks", function (result) {
+
+		$.each(result, function (i, item) {
+			$("#bookTbl").append(
+				"<tr>"
+				+ "<td>" + item.name + "</td>"
+				+ "<td>" + item.title + "</td>"
+				+ "</tr>")
+		})
+	});
+}
+</script>
+<body>
+<h1 style="color: red;"> Admin Operations  </h1>
+
+              <h3 style="color: blue;">Add book</h3>
+				<form id="addBookForm"
+					action="http://localhost:8080/BookSystemWeb/rest/admin/createbook">
+					book name: <input type="text" name="name"><br>
+					book title: <input type="text" name="title"><br>
+					 <input type="submit" value="Add book">
+				</form>
+                <br>
+                
+                <h3 style="color: blue;">Remove book</h3>
+				<form id="RemoveBookForm"
+					action="http://localhost:8080/BookSystemWeb/rest/admin/removebook">
+					book name: <input type="text" name="name"><br>
+					 <input type="submit" value="Remove book">
+				</form>
+                <br>
+			 	<h2 style="color: blue;">books</h2>
+				<button id="bookbtn" class="button" onClick="AllBooks()">
+					Show All books</button>
+				<table name="bookTable" id="bookTbl">
+					<tr>
+						<th>book Name</th>
+						<th>book title</th>
+					</tr>
+				</table>
+
+				
+				
+			
+</body>
+
+</html>
