@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.sun.org.apache.regexp.internal.recompile;
+
 
 public class ConnectionPoolSingleton {
 
@@ -40,7 +40,7 @@ public class ConnectionPoolSingleton {
 	
 	private Connection createConnection() throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/booksDB", "root", "root");
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/booksDB", "dbuser", "dbpassword");
 		return connection;
 	}
 	
